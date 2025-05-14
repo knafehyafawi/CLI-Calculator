@@ -1,7 +1,17 @@
 import math
 
-BINARY_OPS = {'+','-','*','/','^', '**'}
-UNARY_OPS = {'sqrt'}
+BINARY_OPS = {
+    '+':lambda a, b: a + b,
+    '-':lambda a, b: a - b,
+    '*':lambda a, b: a * b,
+    '/':lambda a, b: a / b if b!=0 else "Math error: Division by zero.",
+    '^':lambda a, b: a ** b,
+    '**':lambda a, b: a ** b,
+}
+UNARY_OPS = {
+    'sqrt':lambda a: math.sqrt(a) if a>=0 else "Math error: Cannot square root negative."
+
+}
 
 def calculate(num1, operation, num2=None):
     """
@@ -19,36 +29,14 @@ def calculate(num1, operation, num2=None):
         if num2 is None:
             return "Syntax error: please input two operands."
 
-        elif num2 is not None:
-            if operation in {'+'}:
-                ans = num1 + num2
-                return ans
-            if operation in {'-'}:
-                ans = num1 - num2
-                return ans
-            if operation in {'*'}:
-                ans = num1 * num2
-                return ans
-            if operation in {'/'}:
-                if num2 == 0:
-                    return 'Math error. Cannot divide by zero.'
-                else:
-                    ans = num1 / num2
-                    return ans
-            if operation in {'^', '**'}:
-                ans = num1 ** num2
-                return ans
+        return BINARY_OPS[operation](num1, num2)
 
     # ---------- UNARY ----------
     if operation in UNARY_OPS:
-        if operation in {'sqrt'}:
-            if num2 is not None:
-                return "Syntax error: please input only one operand."
-            if num1 < 0:
-                return "Math error: Cannot square root negative number."
+        if num2 is not None:
+            return "Syntax error: please input one operand."
 
-            ans = math.sqrt(num1)
-            return ans
+        return UNARY_OPS[operation](num1)
 
     # ---------- UNKNOWN ----------
     return "Syntax error. Operation not recognized."
