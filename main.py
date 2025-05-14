@@ -9,6 +9,7 @@ def main():
         ans = calculate(num1, operation, num2=None)
         print(ans)
         return
+
     elif operation in BINARY_OPS:
         num2 = float(input("Enter second number: "))
         ans = calculate(num1, operation, num2)

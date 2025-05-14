@@ -51,5 +51,4 @@ def calculate(num1, operation, num2=None):
             return ans
 
     # ---------- UNKNOWN ----------
-
     return "Syntax error. Operation not recognized."
