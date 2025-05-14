@@ -2,7 +2,7 @@
 Basic command-line calculator in Python.
 
 ---
-**Currently the available operations are:**
+**Currently, the available operations are:**
 - Addition (`+`)
 - Subtraction (`-`)
 - Multiplication (`*`)
